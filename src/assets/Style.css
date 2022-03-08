@@ -1,0 +1,16 @@
+body {
+  background-color: #e5e5e5;
+}
+a {
+  color: white !important;
+}
+.dash {
+  background-color: #053b7b;
+}
+.btn-addblog {
+  background-color: #ffc107;
+}
+.top {
+  border-radius: 20px;
+  background-color: #cedff4;
+}
