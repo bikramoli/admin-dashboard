@@ -1,0 +1,49 @@
+body,
+html {
+  font-family: "Times New Roman", Times, serif;
+  font-stretch: expanded;
+}
+body {
+  background-color: #e5e5e5;
+}
+a {
+  color: white !important;
+}
+.sidenav {
+  background-color: #053b7b;
+}
+.btn-addblog {
+  background-color: #ffc107;
+}
+.custom-button {
+  border-radius: 20px;
+  text-align: center;
+  background-color: #cedff4;
+}
+.ColoredCircle {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: #cedff4;
+}
+.bullet-circle {
+  height: 20px;
+  width: 20px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #cedff4;
+}
+span.a {
+  display: inline;
+}
+.user--name {
+  color: #ffc107;
+}
+.country-info {
+  background-color: #0961c9;
+  width: 250px;
+}
+.country-info img {
+  background-color: #053b7b;
+}

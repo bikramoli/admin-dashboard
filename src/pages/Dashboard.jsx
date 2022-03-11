@@ -1,144 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import SideNav from "../components/SideNav";
 import Header from "../components/Header";
 import HeaderBelow from "../components/HeaderBelow";
-import { Card } from "react-bootstrap";
+import ChartCard from "../components/ChartCard";
+import Activities from "../components/Activities";
+import TopBlogs from "../components/TopBlogs";
+import ArchivedBlog from "../components/ArchivedBlogs";
+import axios from "axios";
 
-const Dashboard = () => {
+const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
+const API_KEY = "ad432a8c8352c8ef8cc469797072396f";
+
+const Dashboard = (props) => {
+  const [state, setState] = React.useState({
+    longitude: "",
+    latitude: "",
+  });
+  const [cityname, setCityname] = useState("Place name");
+  const [countryName, setCountryName] = useState("Np");
+  const [temperature, setTemperature] = useState(0);
+  const [weather, setWeather] = useState([]);
+  const [teamList, setTeamList] = useState("");
+
+  const { longitude, latitude } = state;
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setState({
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+      });
+    });
+    axios
+      .get(`${API_endpoint}lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+      .then((response) => {
+        console.log(response.data.weather[0].description);
+        setCityname(response.data.name);
+        setCountryName(response.data.sys.country.toLowerCase());
+        setTemperature((response.data.main.temp - 273.15).toFixed(0));
+        setWeather(response.data.weather[0].description);
+      });
+  }, [latitude]);
+
   return (
     <div className="container-fluid">
-      <div className="p-2 mt-5  text-white text-center">
-        <Header />
-        <HeaderBelow />
-      </div>
+      <div className="row flex-nowrap">
+        <SideNav />
+        <div className="col py-3 text-dark ">
+          <div className="container-fluid">
+            <div className="container-fluid mt-5  text-white text-center">
+              <Header />
+              <HeaderBelow
+                cityname={cityname}
+                countryName={countryName}
+                userName={props.userName}
+              />
+            </div>
 
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-md-6 ">
-            <div className="row">
-              <div className="col-sm-6 p-2" style={{ height: "250px" }}>
-                <Card className="w-100 h-100">hello</Card>
-              </div>
-              <div className="col-sm-6 p-2">
-                <Card className="w-100 h-100">hello</Card>
+            <div className="container mt-5">
+              <div className="row">
+                <div className="col-xl-6">
+                  <ChartCard />
+                  <ArchivedBlog />
+                </div>
+                <div className="col-xl-6">
+                  <Activities />
+                  <TopBlogs />
+                </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col-sm-6 p-2" style={{ height: "250px" }}>
-                <Card className="w-100 h-100">hello</Card>
-              </div>
-              <div className="col-sm-6 p-2">
-                <Card className="w-100 h-100">hello</Card>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-6 p-2">
-            <Card className="w-100 mb-3">
-              <h2>TITLE HEADING</h2>
-              <h5>Title description, Dec 7, 2020</h5>
-              <div className="fakeimg">Fake Image</div>
-              <p>Some text..</p>
-              <p>
-                Sunt in culpa qui officia deserunt mollit anim id est laborum
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco.
-              </p>
-              <p>
-                Sunt in culpa qui officia deserunt mollit anim id est laborum
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                nostrud exercitation ullamco.
-              </p>
-            </Card>
-
-            <Card className="w-100">
-              <div className="d-flex justify-content-between mb-3 p-2">
-                <strong>Top Blogs</strong>
-                <button className="top btn btn-primary text-dark">
-                  View all
-                </button>
-              </div>
-
-              <div className="row p-2">
-                <div className="col-2 text-dark ">
-                  {" "}
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-                    className="rounded img-fluid"
-                    height="70"
-                    width="70"
-                  />
-                </div>
-                <div className="col-10 text-dark text-start">
-                  <p>
-                    This is the short description of latest blog This is the
-                    short description of latest blog
-                  </p>
-                  <p className="border-bottom">Kathmandu, Nepal</p>
-                </div>
-              </div>
-
-              <div className="row p-2">
-                <div className="col-2 text-dark ">
-                  {" "}
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-                    className="rounded img-fluid"
-                    height="70"
-                    width="70"
-                  />
-                </div>
-                <div className="col-10 text-dark text-start">
-                  <p>
-                    This is the short description of latest blog This is the
-                    short description of latest blog
-                  </p>
-                  <p className="border-bottom">Kathmandu, Nepal</p>
-                </div>
-              </div>
-              <div className="row p-2">
-                <div className="col-2 text-dark ">
-                  {" "}
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-                    className="rounded img-fluid"
-                    height="70"
-                    width="70"
-                  />
-                </div>
-                <div className="col-10 text-dark text-start">
-                  <p>
-                    This is the short description of latest blog This is the
-                    short description of latest blog
-                  </p>
-                  <p className="border-bottom">Kathmandu, Nepal</p>
-                </div>
-              </div>
-              <div className="row p-2">
-                <div className="col-2 text-dark ">
-                  {" "}
-                  <img
-                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg"
-                    className="rounded img-fluid"
-                    height="70"
-                    width="70"
-                  />
-                </div>
-                <div className="col-10 text-dark text-start">
-                  <p>
-                    This is the short description of latest blog This is the
-                    short description of latest blog
-                  </p>
-                  <p className="border-bottom">Kathmandu, Nepal</p>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
-      </div>
-
-      <div className="mt-5 p-4 bg-dark text-white text-center">
-        <p>Footer</p>
       </div>
     </div>
   );

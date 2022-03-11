@@ -1,32 +1,19 @@
 import React from "react";
-import "../assets/Style.css";
+import "../assets/style/Style.css";
 import logo from "../assets/images/logo.svg";
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
-    <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-      <div className="container-fluid ">
-        <div>
+    <nav className="navbar fixed-top navbar-light bg-light">
+      <div className="row container-fluid p-2">
+        <div className=" col-2 ps-3">
           <a className="navbar-brand" href="#">
             <img src={logo} height="30" alt="logo" loading="lazy" />
           </a>
         </div>
-        <div>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i className="fas fa-bars"></i>
-          </button>
-        </div>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <form className="d-flex input-group w-100">
+        <div className="col-10 container d-flex justify-content-between">
+          <form className="input-group w-75">
             <input
               type="search"
               className="form-control"
@@ -58,7 +45,7 @@ const Navbar = () => {
                   className="rounded-circle"
                 />
                 <span className="d-none d-sm-inline mx-1 text-dark">
-                  Bikram Oli
+                  {props.userName}
                 </span>
               </a>
               <ul className="dropdown-menu dropdown-menu-dark text-small shadow">

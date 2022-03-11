@@ -1,0 +1,17 @@
+@media only screen and (max-width: 800px) {
+  .country-info img {
+    height: 60px;
+    width: 60px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  p,
+  i,
+  .social-icon,
+  .archived-title {
+    font-size: 12px;
+  }
+  .social-icon-value {
+    margin-right: 0px;
+  }
+}

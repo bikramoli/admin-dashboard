@@ -1,17 +1,25 @@
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/Style.css";
-import Dashboard from "./pages/Dashboard";
+import "./assets/style/Style.css";
+import "./assets/style/Responsive.css";
 import Navbar from "./components/Navbar";
-import Dash from "./pages/Dash";
+import Dashboard from "./pages/Dashboard";
+import Blog from "./pages/Blog";
+import Footer from "./components/Footer";
 
 function App() {
+  const [userName, setUserName] = useState("Bikram");
   return (
-    <div className="App">
-      <Navbar />
-      <Dash />
-      {/* <Dashboard /> */}
-    </div>
+    <BrowserRouter>
+      <Navbar userName={userName} />
+      <Routes>
+        <Route exact path="/" element={<Dashboard userName={userName} />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
