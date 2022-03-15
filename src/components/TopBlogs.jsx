@@ -1,14 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import SocialIconGroup from "./SocialIconGroup";
 import { TopBlogsData } from "../assets/data/TopBlogsData";
 
 const TopBlogs = () => {
+  const navigate = useNavigate();
   return (
     <Card className="w-100 shadow p-3">
       <div className="d-flex justify-content-between mb-3 p-2">
         <strong>Top Blogs</strong>
-        <button className="custom-button btn btn-primary text-dark">
+        <button
+          className="custom-button btn btn-primary text-dark"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/allblogs");
+          }}
+        >
           View all
         </button>
       </div>

@@ -3,7 +3,7 @@ import copyright from "../assets/images/copyright.png";
 
 const Footer = () => {
   return (
-    <div className=" p-4 bg-white text-dark text-center">
+    <div className=" pt-2 mt-3 bg-white text-dark text-center fixed-bottom">
       <p>
         <img src={copyright} height="20" alt="C" /> CopyRight{" "}
         <strong>Cagtu Nepal</strong>, All Rights Reserved

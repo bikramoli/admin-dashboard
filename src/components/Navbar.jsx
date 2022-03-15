@@ -4,31 +4,53 @@ import logo from "../assets/images/logo.svg";
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar fixed-top navbar-light bg-light">
-      <div className="row container-fluid p-2">
-        <div className=" col-2 ps-3">
-          <a className="navbar-brand" href="#">
-            <img src={logo} height="30" alt="logo" loading="lazy" />
-          </a>
-        </div>
-
-        <div className="col-10 container d-flex justify-content-between">
-          <form className="input-group w-75">
-            <input
-              type="search"
-              className="form-control"
-              placeholder="Type query"
-              aria-label="Search"
-            />
-            <button
-              className="btn btn-outline-primary"
-              type="button"
-              data-mdb-ripple-color="dark"
-            >
+    <nav className="navbar navbar-expand-lg navbar-dark bg-light fixed-top p-3">
+      <div className="container-fluid">
+        <button
+          className="navbar-toggler bg-secondary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebar"
+          aria-controls="offcanvasExample"
+        >
+          <span
+            className="navbar-toggler-icon"
+            data-bs-target="#sidebar"
+          ></span>
+        </button>
+        <a
+          className="navbar-brand me-auto ms-lg-0 ps-4 text-uppercase fw-bold text-dark"
+          href="/"
+        >
+          <img src={logo} height="30" alt="logo" loading="lazy" />
+        </a>
+        <button
+          className="navbar-toggler bg-secondary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#topNavBar"
+          aria-controls="topNavBar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="topNavBar">
+          <form className="navbar-search-form d-flex text-center ms-auto my-lg-0">
+            <div className="input-group ms-5">
+              <input
+                className="form-control"
+                type="search"
+                placeholder="Type here to search..."
+                aria-label="Search"
+              />
+            </div>
+            <button className="btn ms-2 btn-outline-primary" type="submit">
+              {/* <i className="bi bi-search"></i> */}
               Search
             </button>
           </form>
-          <ul className="navbar-nav mb-2 mb-lg-0">
+          <ul className="navbar-nav ms-5">
             <li className="nav-item dropdown">
               <a
                 href="#"
@@ -45,31 +67,23 @@ const Navbar = (props) => {
                   className="rounded-circle"
                 />
                 <span className="d-none d-sm-inline mx-1 text-dark">
-                  {props.userName}
+                  Bikram
                 </span>
               </a>
-              <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
+              <ul className="dropdown-menu dropdown-menu-end bg-secondary">
                 <li>
                   <a className="dropdown-item" href="#">
-                    New project...
+                    My porfile
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Settings
+                    Setting
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Profile
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Sign out
+                    Sign Out
                   </a>
                 </li>
               </ul>

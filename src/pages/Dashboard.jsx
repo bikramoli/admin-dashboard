@@ -3,15 +3,16 @@ import SideNav from "../components/SideNav";
 import Header from "../components/Header";
 import HeaderBelow from "../components/HeaderBelow";
 import ChartCard from "../components/ChartCard";
+import ArchivedBlog from "../components/ArchivedBlogs";
 import Activities from "../components/Activities";
 import TopBlogs from "../components/TopBlogs";
-import ArchivedBlog from "../components/ArchivedBlogs";
+import Navbar from "../components/Navbar";
 import axios from "axios";
 
 const API_endpoint = `https://api.openweathermap.org/data/2.5/weather?`;
 const API_KEY = "ad432a8c8352c8ef8cc469797072396f";
 
-const Dashboard = (props) => {
+const NewDash = () => {
   const [state, setState] = React.useState({
     longitude: "",
     latitude: "",
@@ -43,36 +44,34 @@ const Dashboard = (props) => {
   }, [latitude]);
 
   return (
-    <div className="container-fluid">
-      <div className="row flex-nowrap">
-        <SideNav />
-        <div className="col py-3 text-dark ">
-          <div className="container-fluid">
-            <div className="container-fluid mt-5  text-white text-center">
-              <Header />
-              <HeaderBelow
-                cityname={cityname}
-                countryName={countryName}
-                userName={props.userName}
-              />
-            </div>
+    <>
+      {/* ------------------ Main-------------- */}
+      <main className="pt-3">
+        <div className="container-fluid">
+          <div className="container-fluid mt-5  text-white text-center">
+            <Header />
+            <HeaderBelow
+              cityname={cityname}
+              countryName={countryName}
+              userName="Bikram"
+            />
+          </div>
 
-            <div className="container mt-5">
-              <div className="row">
-                <div className="col-xl-6">
-                  <ChartCard />
-                  <ArchivedBlog />
-                </div>
-                <div className="col-xl-6">
-                  <Activities />
-                  <TopBlogs />
-                </div>
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-6">
+                <ChartCard />
+                <ArchivedBlog />
+              </div>
+              <div className="col-xl-6">
+                <Activities />
+                <TopBlogs />
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 };
-export default Dashboard;
+export default NewDash;

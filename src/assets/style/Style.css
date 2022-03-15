@@ -1,13 +1,19 @@
 body,
 html {
-  font-family: "Times New Roman", Times, serif;
-  font-stretch: expanded;
+  font-family: Open Sans, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 body {
   background-color: #e5e5e5;
 }
 a {
   color: white !important;
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
 }
 .sidenav {
   background-color: #053b7b;
@@ -15,6 +21,7 @@ a {
 .btn-addblog {
   background-color: #ffc107;
 }
+
 .custom-button {
   border-radius: 20px;
   text-align: center;
@@ -41,9 +48,45 @@ span.a {
   color: #ffc107;
 }
 .country-info {
-  background-color: #0961c9;
+  background-color: #0961c9 !important;
   width: 250px;
 }
 .country-info img {
   background-color: #053b7b;
+}
+/* -------Comment section ---------- */
+.comment-card {
+  background-color: #cedff4;
+}
+
+/* --------comment section---------- */
+/* -----------login----------------- */
+#main-container {
+  place-items: center center;
+  margin-top: 5rem !important;
+}
+.main-container-card {
+  background-color: #053b7b !important;
+  width: 429px;
+}
+
+.form-control:focus {
+  z-index: 5;
+}
+#btn {
+  display: block;
+  border-radius: 20px;
+  background-color: #ffc107 !important;
+}
+/* -------------- */
+.signin-input {
+  height: 40px;
+  border-radius: 20px !important;
+}
+/* -----------login----------------- */
+.card-text {
+  overflow: hidden;
+  white-space: normal;
+  height: 5.6em;
+  text-overflow: ellipsis;
 }
